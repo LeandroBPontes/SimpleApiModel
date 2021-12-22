@@ -1,14 +1,15 @@
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
 namespace Shop.Models
 {
     public class Category{
-        [key]
+        [Key]
         public int Id {get; set;}
 
-        [required(ErrorMessage="Este campo é obragatório")]
-        [MaxLenght(60, ErrorMessage="Este campo deve conter entre 3 e 60 caracteres")]
-        [MinLenght(3, ErrorMessage="Este campo deve conter entre 3 e 60 caracteres")]
+        [Required(ErrorMessage="Este campo é obragatório")]
+        [MaxLength(60, ErrorMessage="Este campo deve conter entre 3 e 60 caracteres")]
+        [MinLength(3, ErrorMessage="Este campo deve conter entre 3 e 60 caracteres")]
         public string Title {get; set;}
     }
 }

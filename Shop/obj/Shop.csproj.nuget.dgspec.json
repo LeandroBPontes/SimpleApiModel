@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Shop\\Shop.csproj": {}
+    "C:\\Users\\leandrobp\\Desktop\\CursoBalta\\CursoBaltaDotNetFullWebApi\\Shop\\Shop.csproj": {}
   },
   "projects": {
-    "C:\\Shop\\Shop.csproj": {
+    "C:\\Users\\leandrobp\\Desktop\\CursoBalta\\CursoBaltaDotNetFullWebApi\\Shop\\Shop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Shop\\Shop.csproj",
+        "projectUniqueName": "C:\\Users\\leandrobp\\Desktop\\CursoBalta\\CursoBaltaDotNetFullWebApi\\Shop\\Shop.csproj",
         "projectName": "Shop",
-        "projectPath": "C:\\Shop\\Shop.csproj",
-        "packagesPath": "C:\\Users\\LeandroBP\\.nuget\\packages\\",
-        "outputPath": "C:\\Shop\\obj\\",
+        "projectPath": "C:\\Users\\leandrobp\\Desktop\\CursoBalta\\CursoBaltaDotNetFullWebApi\\Shop\\Shop.csproj",
+        "packagesPath": "C:\\Users\\leandrobp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\leandrobp\\Desktop\\CursoBalta\\CursoBaltaDotNetFullWebApi\\Shop\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\LeandroBP\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\leandrobp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -32,6 +27,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -43,6 +39,37 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Castle.Core": {
+              "target": "Package",
+              "version": "[4.4.1, )"
+            },
+            "ComponentModel.Annotations.Validation": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.DataAnnotations": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -61,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

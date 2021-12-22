@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\leandrobp\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\leandrobp\\.nuget\\packages"
+    ]
+  }
+}
