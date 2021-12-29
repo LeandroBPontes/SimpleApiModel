@@ -1,28 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\leandrobp\\Desktop\\CursoBalta\\CursoBaltaDotNetFullWebApi\\Shop\\Shop.csproj": {}
+    "C:\\Users\\leand\\Desktop\\CursoBaltaDotNetFullWebApi\\Shop\\Shop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\leandrobp\\Desktop\\CursoBalta\\CursoBaltaDotNetFullWebApi\\Shop\\Shop.csproj": {
+    "C:\\Users\\leand\\Desktop\\CursoBaltaDotNetFullWebApi\\Shop\\Shop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\leandrobp\\Desktop\\CursoBalta\\CursoBaltaDotNetFullWebApi\\Shop\\Shop.csproj",
+        "projectUniqueName": "C:\\Users\\leand\\Desktop\\CursoBaltaDotNetFullWebApi\\Shop\\Shop.csproj",
         "projectName": "Shop",
-        "projectPath": "C:\\Users\\leandrobp\\Desktop\\CursoBalta\\CursoBaltaDotNetFullWebApi\\Shop\\Shop.csproj",
-        "packagesPath": "C:\\Users\\leandrobp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\leandrobp\\Desktop\\CursoBalta\\CursoBaltaDotNetFullWebApi\\Shop\\obj\\",
+        "projectPath": "C:\\Users\\leand\\Desktop\\CursoBaltaDotNetFullWebApi\\Shop\\Shop.csproj",
+        "packagesPath": "C:\\Users\\leand\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\leand\\Desktop\\CursoBaltaDotNetFullWebApi\\Shop\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\leandrobp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\leand\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://tcerjvm21:8080/tfs/DefaultCollection/_packaging/PacotesTCE/nuget/v3/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,6 +64,16 @@
               "target": "Package",
               "version": "[5.0.9, )"
             },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
@@ -88,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
