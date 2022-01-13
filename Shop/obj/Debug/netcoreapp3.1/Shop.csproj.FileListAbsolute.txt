@@ -118,3 +118,8 @@ C:\Users\leand\Desktop\CursoBaltaDotNetFullWebApi\Shop\bin\Debug\netcoreapp3.1\H
 C:\Users\leand\Desktop\CursoBaltaDotNetFullWebApi\Shop\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\leand\Desktop\CursoBaltaDotNetFullWebApi\Shop\obj\Debug\netcoreapp3.1\Shop.csproj.AssemblyReference.cache
 C:\Users\leand\Desktop\CursoBaltaDotNetFullWebApi\Shop\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\leand\Desktop\CursoBaltaDotNetFullWebApi\Shop\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\leand\Desktop\CursoBaltaDotNetFullWebApi\Shop\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\leand\Desktop\CursoBaltaDotNetFullWebApi\Shop\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\leand\Desktop\CursoBaltaDotNetFullWebApi\Shop\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\leand\Desktop\CursoBaltaDotNetFullWebApi\Shop\obj\Debug\netcoreapp3.1\Shop.MvcApplicationPartsAssemblyInfo.cs

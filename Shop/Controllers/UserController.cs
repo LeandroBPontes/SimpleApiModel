@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shop.Data;
@@ -12,12 +13,15 @@ using System.Threading.Tasks;
 namespace Shop.Controllers {
     [Route("users")]
     public class UserController : ControllerBase {
+       
         [HttpGet]
-        public async Task<ActionResult<List<Category>>> Get([FromServices] DataContext context) {
+        [Authorize(Roles = "manager")]
+        public async Task<ActionResult<List<User>>> Get([FromServices] DataContext context) {
 
-            var categories = await context.Categories.AsNoTracking().ToListAsync();
-            return Ok(categories);
+            var users = await context.Users.AsNoTracking().ToListAsync();
+            return Ok(users);
         }
+
 
         [HttpGet]
         [Route("{id:int}")]
@@ -28,32 +32,19 @@ namespace Shop.Controllers {
         }
 
         [HttpPost]
-        [Route("login")]
-        public async Task<ActionResult<dynamic>> Authenticate(
-            [FromBody] User model,
-            [FromServices] DataContext context) {
-
-            var user = await context.Users.AsNoTracking()
-                .Where(x => x.Username == model.Username && x.Password == model.Password)
-                .FirstOrDefaultAsync();
-            
-
-            if (user == null)
-                return NotFound(new { message = "Usuário ou senha inválido" });
-
-            var token = TokenService.GenerateToken(user);
-
-            return new {
-                user = user,
-                token = token
-            };
-        }
-
-
-        [HttpPost]
+        //[Authorize(Roles = "manager")]
         public async Task<ActionResult<User>> Post(
-            [FromBody] User model,
-            [FromServices] DataContext context) {
+           [FromBody] User model,
+           [FromServices] DataContext context) {
+
+
+            /*
+             * todo:
+             *forca o usuario a ser sempre employee
+             * model.Role = "employee";
+             * 
+             * aprender a encriptar essa senha
+             */
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -62,6 +53,9 @@ namespace Shop.Controllers {
                 context.Users.Add(model);
                 //gera um id automatico e incrementa
                 await context.SaveChangesAsync();
+
+                //esconde a senha
+                model.Password = "";
                 return Ok(model);
             }
             catch (Exception) {
@@ -70,7 +64,33 @@ namespace Shop.Controllers {
 
         }
 
+        [HttpPost]
+        [Route("login")]
+        public async Task<ActionResult<dynamic>> Authenticate(
+           [FromBody] User model,
+           [FromServices] DataContext context) {
+
+            var user = await context.Users.AsNoTracking()
+                .Where(x => x.Username == model.Username && x.Password == model.Password)
+                .FirstOrDefaultAsync();
+
+
+            if (user == null)
+                return NotFound(new { message = "Usuário ou senha inválido" });
+
+            var token = TokenService.GenerateToken(user);
+            //esconde a senha
+            model.Password = "";
+
+
+            return new {
+                user = user,
+                token = token
+            };
+        }
+
         [HttpPut]
+        [Authorize(Roles = "manager")]
         [Route("{id:int}")]
         public async Task<ActionResult<Category>> Put(
             int id,
@@ -100,6 +120,7 @@ namespace Shop.Controllers {
 
         [HttpDelete]
         [Route("{id:int}")]
+        [Authorize(Roles = "manager")]
         public async Task<ActionResult<Category>> Delete(
             int id,
             [FromServices] DataContext context) {
@@ -117,5 +138,28 @@ namespace Shop.Controllers {
                 return BadRequest(new { message = "Não foi possível remover a categoria" });
             }
         }
+
+        /*
+         [HttpGet]
+        [Route("anonimo")]
+        [AllowAnonymous]
+        public string Anonimo() => "Anonimo";
+
+        [HttpGet]
+        [Route("autenticado")]
+        [Authorize]
+        public string Autenticado() => "Autenticado";
+
+        [HttpGet]
+        [Route("funcionario")]
+        [Authorize(Roles="employee")]
+        public string Funcionario() => "funcioario";
+
+        [HttpGet]
+        [Route("gerente")]
+        [Authorize(Roles = "manager")]
+        public string Gerente() => "Gerente";
+         
+         */
     }
 }

@@ -5,7 +5,7 @@ using Shop.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace Shop.Controllers {
     [Route("categories")]
@@ -27,6 +27,7 @@ namespace Shop.Controllers {
         }
 
         [HttpPost]
+        //[Authorize(Roles = "employee")]
         public async Task<ActionResult<Category>> Post(
             [FromBody] Category model,
             [FromServices] DataContext context) {
@@ -46,6 +47,7 @@ namespace Shop.Controllers {
         }
 
         [HttpPut]
+        //[Authorize(Roles = "employee")]
         [Route("{id:int}")]
         public async Task<ActionResult<Category>> Put(
             int id,
@@ -74,6 +76,7 @@ namespace Shop.Controllers {
         }
 
         [HttpDelete]
+        //[Authorize(Roles = "employee")]
         [Route("{id:int}")]
         public async Task<ActionResult<Category>> Delete(
             int id,

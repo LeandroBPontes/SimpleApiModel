@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Shop.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Shop.Controllers {
     [Route("products")]
@@ -44,6 +45,7 @@ namespace Shop.Controllers {
         }
 
         [HttpPost]
+        //[Authorize(Roles = "employee")]
         public async Task<ActionResult<Product>> Post(
            [FromBody] Product model,
            [FromServices] DataContext context) {

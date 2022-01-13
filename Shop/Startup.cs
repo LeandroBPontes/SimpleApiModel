@@ -8,6 +8,9 @@ using Microsoft.Extensions.Hosting;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.ResponseCompression;
+using System.Linq;
+using Microsoft.OpenApi.Models;
 
 namespace Shop
 {
@@ -22,8 +25,19 @@ namespace Shop
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+
+            //comprimir zipando os arquivos json para a tela e o HTML consegue extrair e mostrar os dados
+            services.AddResponseCompression(options => {
+                options.Providers.Add<GzipCompressionProvider>();
+                options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/json" });
+
+            });
+
+            //services.AddResponseCaching();
+            services.AddCors();
             services.AddControllers();
 
+            //autenticacao e autorizacao
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
             services.AddAuthentication(x => {
 
@@ -43,15 +57,20 @@ namespace Shop
         });
                 
 
-            //services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
-            services.AddDbContext<DataContext>(
+            services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
+            /*services.AddDbContext<DataContext>(
             opt => opt.UseSqlServer(
                 Configuration.GetConnectionString("connectionString")
                 ));
 
+            services.AddScoped<DataContext, DataContext>();*/
 
-            services.AddScoped<DataContext, DataContext>();
-            
+            services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shop API", Version = "v1" });
+            });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,7 +83,19 @@ namespace Shop
 
             app.UseHttpsRedirection();
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Shop API V1");
+            });
+
             app.UseRouting();
+
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            );
+
             app.UseAuthentication();
             app.UseAuthorization();
 
